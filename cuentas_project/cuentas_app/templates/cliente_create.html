@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<h1>Crear Cliente</h1>
+
+<form method="post">
+  {% csrf_token %}
+  <h2>Datos del Cliente</h2>
+  {{ cliente_form.as_p }}
+
+  <h2>Datos de la Cuenta</h2>
+  {{ cuenta_form.as_p }}
+
+  <h2>Clave Dinámica</h2>
+  {{ clave_form.as_p }}
+
+  <button type="submit">Guardar</button>
+</form>
+{% endblock %}

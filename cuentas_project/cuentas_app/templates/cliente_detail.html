@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <h1 class="text-center title">Detalles del Cliente</h1>
+
+      <h2 class="sub-title mt-4">Información del Cliente</h2>
+      <p><strong>Cédula:</strong> {{ cliente.cedula }}</p>
+      <p><strong>Nombre:</strong> {{ cliente.nombre }}</p>
+      <p><strong>Región:</strong> {{ cliente.region }}</p>
+      <p><strong>Edad:</strong> {{ cliente.edad }}</p>
+
+      <h2 class="sub-title mt-4">Cuentas</h2>
+      {% for cuenta in cuentas %}
+        <p><strong>Número de Cuenta:</strong> {{ cuenta.num_cuenta }}</p>
+        <p><strong>Estado:</strong> {{ cuenta.get_estado_display }}</p>
+        <p><strong>Saldo:</strong> {{ cuenta.saldo }}</p>
+        <p><strong>Fecha de Apertura:</strong> {{ cuenta.fecha_apertura }}</p>
+      {% empty %}
+        <p>No se encontraron cuentas.</p>
+      {% endfor %}
+
+      <h2 class="sub-title mt-4">Claves Dinámicas</h2>
+      {% if clave %}
+        <p><strong>Correo:</strong> {{ clave.correo }}</p>
+        <p><strong>Celular:</strong> {{ clave.celular }}</p>
+      {% else %}
+        <p>No se encontraron claves dinámicas.</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}
